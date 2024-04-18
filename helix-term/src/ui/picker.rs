@@ -867,10 +867,10 @@ impl<T: Item + 'static + Send + Sync> Component for Picker<T> {
         ctx.editor.reset_idle_timer();
 
         match key_event {
-            shift!(Tab) | key!(Up) | ctrl!('p') => {
+            shift!(Tab) | key!(Up) | ctrl!('k') => {
                 self.move_by(1, Direction::Backward);
             }
-            key!(Tab) | key!(Down) | ctrl!('n') => {
+            key!(Tab) | key!(Down) | ctrl!('j') => {
                 self.move_by(1, Direction::Forward);
             }
             key!(PageDown) | ctrl!('d') => {
@@ -897,13 +897,13 @@ impl<T: Item + 'static + Send + Sync> Component for Picker<T> {
                 }
                 return close_fn(self);
             }
-            ctrl!('s') => {
+            ctrl!('=') => {
                 if let Some(option) = self.selection() {
                     (self.callback_fn)(ctx, option, Action::HorizontalSplit);
                 }
                 return close_fn(self);
             }
-            ctrl!('v') => {
+            ctrl!('"') => {
                 if let Some(option) = self.selection() {
                     (self.callback_fn)(ctx, option, Action::VerticalSplit);
                 }
